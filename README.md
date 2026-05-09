@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🤖 Automation Workflow & Bot Execution System
 > SquareYards Internship Assignment — Task 1  
 > Built with React.js (Frontend) + Node.js (Backend) + Playwright (Bot Engine)
@@ -212,3 +213,6 @@ SCREENSHOT_DIR=./screenshots
 | What are cookies in automation? | Session data that keeps the bot "logged in" |
 | What is a job queue? | A list of tasks to execute one by one |
 | Why save screenshots? | Proof of execution + debugging failed runs |
+=======
+# squareyards-assignment
+>>>>>>> 415cdc68686e33c7a50e0f4b45f934ee1d0fcd5a
