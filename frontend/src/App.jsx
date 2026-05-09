@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
-const API = "http://localhost:4000";
+const API = "https://squareyards-backend-jdb9.onrender.com";
 
-// --- small helper functions ---
+// small helper functions
 
 function getStatusColor(status) {
   if (status === "running") return "#f59e0b";
@@ -25,7 +25,7 @@ function getStatusMessage(status) {
   return "";
 }
 
-// --- main component ---
+// main component 
 
 export default function App() {
   const [url, setUrl] = useState("");
@@ -36,11 +36,13 @@ export default function App() {
   const logsBottomRef = useRef(null);
 
   // auto-scroll logs to bottom whenever logs update
+
   useEffect(() => {
     logsBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [logs]);
 
   // kick off the bot
+
   async function handleRunBot() {
     if (!url.trim()) {
       alert("Please enter a URL first!");
@@ -67,6 +69,7 @@ export default function App() {
       }
 
       // start polling for updates
+
       startPolling(data.jobId);
 
     } catch (err) {
@@ -80,6 +83,7 @@ export default function App() {
   }
 
   // poll the job status every 1.5s
+
   function startPolling(jobId) {
     const timer = setInterval(async () => {
       try {
@@ -89,6 +93,7 @@ export default function App() {
         setLogs(job.logs || []);
 
         // show only the last screenshot
+
         if (job.screenshots?.length > 0) {
           const lastScreenshot = job.screenshots[job.screenshots.length - 1];
           setScreenshot(lastScreenshot.file);
@@ -104,6 +109,7 @@ export default function App() {
 
       } catch (err) {
         // network error mid-poll — just stop
+
         clearInterval(timer);
       }
     }, 1500);
@@ -147,7 +153,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* ── Main content ── */}
+      {/*Main content*/}
       <main style={styles.main}>
 
         {/* URL input card */}
@@ -206,7 +212,7 @@ export default function App() {
                     <span style={styles.logText}>{log.message}</span>
                   </div>
                 ))}
-                {/* dummy div to scroll to */}
+              
                 <div ref={logsBottomRef} />
               </div>
             </div>
@@ -243,7 +249,7 @@ export default function App() {
 
       </main>
 
-      {/* ── Footer ── */}
+      {/*Footer*/}
       <footer style={styles.footer}>
         SquareYards Automation &amp; AI Tools Internship — 2026
       </footer>
@@ -252,8 +258,7 @@ export default function App() {
   );
 }
 
-// ── Styles ──
-// Keeping everything in one place so it's easy to find and change.
+// Styles 
 
 const styles = {
   page: {
